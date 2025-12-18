@@ -2,18 +2,36 @@ import textureImage from "@/assets/texture-stone.jpg";
 
 const Philosophy = () => {
   return (
-    <section className="section-padding bg-background" id="about">
+    <section className="section-padding bg-card" id="about">
       <div className="container-narrow">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Image - Asymmetric placement */}
+          <div className="lg:col-span-5 lg:col-start-1">
+            <div className="relative aspect-[3/4] overflow-hidden">
+              <img
+                src={textureImage}
+                alt="Natural limestone texture with soft organic character"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 italic">
+              Material study: Limestone
+            </p>
+          </div>
+
           {/* Text Content */}
-          <div className="order-2 lg:order-1">
-            <p className="text-xs tracking-[0.25em] text-muted-foreground uppercase mb-6">
+          <div className="lg:col-span-6 lg:col-start-7 lg:pt-16">
+            <p className="text-xs tracking-[0.25em] text-muted-foreground uppercase mb-8">
               Philosophy
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-8 leading-tight text-balance">
-              Luxury is quiet, restrained, and intentional
+            
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground mb-10 leading-snug">
+              Luxury is quiet,<br />
+              restrained, and<br />
+              <em className="font-light">intentional</em>
             </h2>
-            <div className="space-y-6 text-muted-foreground">
+            
+            <div className="space-y-6 text-muted-foreground text-sm md:text-base leading-relaxed">
               <p>
                 At Niyashi Kaushik Spaces, we believe in design that transcends 
                 trends—expressed through materials, proportions, and light. 
@@ -26,22 +44,15 @@ const Philosophy = () => {
               </p>
             </div>
             
-            {/* Signature */}
-            <div className="mt-12 pt-8 border-t border-border">
-              <p className="font-serif text-lg italic text-foreground">
-                "The work is luxury, but not flashy."
-              </p>
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="order-1 lg:order-2">
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <img
-                src={textureImage}
-                alt="Natural limestone texture with soft shadows"
-                className="w-full h-full object-cover"
-              />
+            {/* Signature Quote */}
+            <div className="mt-16 pt-8 border-t border-border">
+              <blockquote className="font-serif text-lg md:text-xl italic text-foreground leading-relaxed">
+                "The work is luxury, but not flashy. It's felt in how a space 
+                functions and ages over time."
+              </blockquote>
+              <cite className="block mt-4 text-xs tracking-[0.2em] text-muted-foreground uppercase not-italic">
+                — Niyashi Kaushik
+              </cite>
             </div>
           </div>
         </div>
