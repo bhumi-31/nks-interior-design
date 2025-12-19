@@ -1,4 +1,4 @@
-import materialsImage from "@/assets/materials-palette.jpg";
+import materialsImage from "../assets/materials-palette.jpg";
 
 const materials = [
   {
@@ -39,7 +39,7 @@ const Materials = () => {
               and <em className="font-light">honest</em>
             </h2>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Materials suitable for the Indian climate with a global sensibility. 
+              Materials suitable for the Indian climate with a global sensibility.
               Every selection is made for how it will age, not just how it looks today.
             </p>
           </div>
@@ -47,7 +47,7 @@ const Materials = () => {
           <div className="lg:col-span-6 lg:col-start-7">
             <div className="space-y-8">
               {materials.map((material, index) => (
-                <div 
+                <div
                   key={material.name}
                   className="border-t border-border pt-6"
                 >

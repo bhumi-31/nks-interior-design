@@ -1,11 +1,11 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Work from "@/components/Work";
-import Philosophy from "@/components/Philosophy";
-import Materials from "@/components/Materials";
-import Process from "@/components/Process";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Work from "../components/Work";
+import Philosophy from "../components/Philosophy";
+import Materials from "../components/Materials";
+import Process from "../components/Process";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const Index = () => {
   return (

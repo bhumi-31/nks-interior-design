@@ -1,5 +1,5 @@
-import bedroomImage from "@/assets/project-bedroom.jpg";
-import diningImage from "@/assets/project-dining.jpg";
+import bedroomImage from "../assets/project-bedroom.jpg";
+import diningImage from "../assets/project-dining.jpg";
 
 const projects = [
   {
@@ -33,7 +33,7 @@ const Work = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-            High-end residential and select commercial projects, 
+            High-end residential and select commercial projects,
             each rooted in material honesty.
           </p>
         </div>
@@ -41,7 +41,7 @@ const Work = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, index) => (
-            <article 
+            <article
               key={project.title}
               className="group cursor-pointer"
             >
@@ -54,7 +54,7 @@ const Work = () => {
                 {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/5" />
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex items-center gap-3 text-xs tracking-wider text-muted-foreground">
                   <span>{project.category}</span>

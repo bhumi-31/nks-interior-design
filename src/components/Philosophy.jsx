@@ -1,4 +1,4 @@
-import textureImage from "@/assets/texture-stone.jpg";
+import textureImage from "../assets/texture-stone.jpg";
 
 const Philosophy = () => {
   return (
@@ -24,30 +24,30 @@ const Philosophy = () => {
             <p className="text-xs tracking-[0.25em] text-muted-foreground uppercase mb-8">
               Philosophy
             </p>
-            
+
             <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground mb-10 leading-snug">
               Luxury is quiet,<br />
               restrained, and<br />
               <em className="font-light">intentional</em>
             </h2>
-            
+
             <div className="space-y-6 text-muted-foreground text-sm md:text-base leading-relaxed">
               <p>
-                At Niyashi Kaushik Spaces, we believe in design that transcends 
-                trends—expressed through materials, proportions, and light. 
+                At Niyashi Kaushik Spaces, we believe in design that transcends
+                trends—expressed through materials, proportions, and light.
                 Spaces that feel considered from the first moment.
               </p>
               <p>
-                We work predominantly with natural stones, matte metals, and 
-                soft tactile fabrics. Materials chosen for their honesty, 
+                We work predominantly with natural stones, matte metals, and
+                soft tactile fabrics. Materials chosen for their honesty,
                 durability, and timeless character.
               </p>
             </div>
-            
+
             {/* Signature Quote */}
             <div className="mt-16 pt-8 border-t border-border">
               <blockquote className="font-serif text-lg md:text-xl italic text-foreground leading-relaxed">
-                "The work is luxury, but not flashy. It's felt in how a space 
+                "The work is luxury, but not flashy. It's felt in how a space
                 functions and ages over time."
               </blockquote>
               <cite className="block mt-4 text-xs tracking-[0.2em] text-muted-foreground uppercase not-italic">
