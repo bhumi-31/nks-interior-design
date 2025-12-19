@@ -13,18 +13,18 @@ const Contact = () => {
               that <em className="font-light">endures?</em>
             </h2>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md mb-10">
-              We take on a limited number of projects each year to ensure 
-              every client receives our full attention and care. Let's discuss 
+              We take on a limited number of projects each year to ensure
+              every client receives our full attention and care. Let's discuss
               how we might work together.
             </p>
-            
+
             {/* Email CTA - Not loud, elegant */}
             <a
-              href="mailto:hello@nks.studio"
+              href="mailto:work.niyashi@gmail.com"
               className="inline-flex items-center gap-4 group"
             >
               <span className="font-serif text-xl md:text-2xl text-foreground editorial-link">
-                hello@nks.studio
+                work.niyashi@gmail.com
               </span>
               <span className="w-8 h-px bg-foreground transition-all duration-500 group-hover:w-12" />
             </a>
