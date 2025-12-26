@@ -60,10 +60,10 @@ const Philosophy = () => {
             {/* Signature Quote */}
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="mt-16 pt-8 border-t border-border">
-                <blockquote className="font-serif text-lg md:text-xl italic text-foreground leading-relaxed">
+                {/* <blockquote className="font-serif text-lg md:text-xl italic text-foreground leading-relaxed">
                   "The work is luxury, but not flashy. It's felt in how a space
                   functions and ages over time."
-                </blockquote>
+                </blockquote> */}
                 <cite className="block mt-4 text-xs tracking-[0.2em] text-muted-foreground uppercase not-italic">
                   — Niyashi Kaushik
                 </cite>
