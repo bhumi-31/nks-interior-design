@@ -10,7 +10,7 @@ const projects = [
     location: "New Delhi",
     category: "Residential",
     description: "Quartzite, wool, brushed bronze",
-    year: "2024",
+    year: "2025",
   },
   {
     image: diningImage,
@@ -18,7 +18,7 @@ const projects = [
     location: "Gurgaon",
     category: "Residential",
     description: "Marble, blackened steel, linen",
-    year: "2023",
+    year: "2025",
   },
 ];
 
