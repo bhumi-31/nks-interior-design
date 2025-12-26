@@ -1,3 +1,6 @@
+import { useState, useEffect, useRef } from "react";
+import ScrollReveal from "./ScrollReveal";
+
 const processSteps = [
   {
     number: "01",
@@ -22,60 +25,142 @@ const processSteps = [
 ];
 
 const Process = () => {
+  const [progress, setProgress] = useState(0);
+  const [activeStep, setActiveStep] = useState(-1);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      // Calculate progress through the section
+      const startPoint = windowHeight * 0.7;
+      const endPoint = -sectionHeight + windowHeight * 0.3;
+
+      if (sectionTop <= startPoint && sectionTop >= endPoint) {
+        const totalRange = startPoint - endPoint;
+        const currentProgress = (startPoint - sectionTop) / totalRange;
+        setProgress(Math.min(Math.max(currentProgress, 0), 1));
+
+        // Calculate active step based on progress
+        const stepProgress = currentProgress * processSteps.length;
+        setActiveStep(Math.floor(stepProgress));
+      } else if (sectionTop > startPoint) {
+        setProgress(0);
+        setActiveStep(-1);
+      } else {
+        setProgress(1);
+        setActiveStep(processSteps.length - 1);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="section-padding bg-card" id="process">
+    <section className="section-padding bg-card" id="process" ref={sectionRef}>
       <div className="container-narrow">
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 md:mb-28">
-          <div className="lg:col-span-5">
-            <p className="text-xs tracking-[0.25em] text-muted-foreground uppercase mb-6">
-              Our Process
-            </p>
-            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug">
-              A structured approach<br />
-              to <em className="font-light">lasting design</em>
-            </h2>
+        <ScrollReveal animation="fade-up">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 md:mb-28">
+            <div className="lg:col-span-5">
+              <p className="text-xs tracking-[0.25em] text-muted-foreground uppercase mb-6">
+                Our Process
+              </p>
+              <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug">
+                A structured approach<br />
+                to <em className="font-light">lasting design</em>
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                Our four-phase methodology ensures clarity at every stage—from
+                initial conversation to final styling. No surprises, only considered decisions.
+              </p>
+            </div>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Our four-phase methodology ensures clarity at every stage—from 
-              initial conversation to final styling. No surprises, only considered decisions.
-            </p>
-          </div>
-        </div>
+        </ScrollReveal>
 
-        {/* Process Steps - Horizontal Timeline */}
+        {/* Process Steps - Horizontal Timeline with Animated Progress */}
         <div className="relative">
-          {/* Connecting Line */}
+          {/* Background Line */}
           <div className="hidden md:block absolute top-4 left-0 right-0 h-px bg-border" />
-          
+
+          {/* Animated Progress Line */}
+          <div
+            className="hidden md:block absolute top-4 left-0 h-px bg-foreground origin-left z-10"
+            style={{
+              width: '100%',
+              transform: `scaleX(${progress})`,
+              transition: 'transform 0.1s ease-out',
+            }}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
             {processSteps.map((step, index) => (
-              <div
+              <ScrollReveal
                 key={step.number}
-                className="relative"
+                animation="fade-up"
+                delay={index * 100}
               >
-                {/* Step Number with dot */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="relative">
-                    <span className="hidden md:block w-2 h-2 rounded-full bg-foreground" />
+                <div
+                  className={`relative transition-all duration-500 ${index <= activeStep ? 'opacity-100' : 'opacity-60'
+                    }`}
+                >
+                  {/* Step Number with animated dot */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="relative">
+                      {/* Pulse effect for active step */}
+                      {index === activeStep && (
+                        <span
+                          className="hidden md:block absolute w-4 h-4 rounded-full bg-foreground/20 -left-1 -top-1"
+                          style={{
+                            animation: 'pulse 2s ease-in-out infinite',
+                          }}
+                        />
+                      )}
+                      <span
+                        className={`hidden md:block w-2 h-2 rounded-full transition-all duration-500 ${index <= activeStep
+                            ? 'bg-foreground scale-100'
+                            : 'bg-muted-foreground scale-75'
+                          }`}
+                      />
+                    </div>
+                    <span className={`text-xs tracking-[0.2em] font-medium transition-colors duration-500 ${index <= activeStep ? 'text-foreground' : 'text-muted-foreground'
+                      }`}>
+                      {step.number}
+                    </span>
                   </div>
-                  <span className="text-xs tracking-[0.2em] text-muted-foreground font-medium">
-                    {step.number}
-                  </span>
+
+                  <h3 className={`font-serif text-lg md:text-xl mb-3 leading-snug transition-colors duration-500 ${index <= activeStep ? 'text-foreground' : 'text-muted-foreground'
+                    }`}>
+                    {step.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-                
-                <h3 className="font-serif text-lg md:text-xl text-foreground mb-3 leading-snug">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); opacity: 0.5; }
+          50% { transform: scale(1.5); opacity: 0; }
+        }
+      `}</style>
     </section>
   );
 };
